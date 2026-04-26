@@ -16,6 +16,7 @@ public:
     bool isValid();
     void print();
     int getSize();
+    std::vector<std::vector<bool>> getCrown();
     void removeCrown(int row, int col);
 };
 

@@ -52,14 +52,10 @@ bool Grid::isValid() {
     }
     for(int q = 0; q < size; q++) {
         if(qLoc[q] != -1) {
-            if(q == 0) {
-                if(std::abs(qLoc[0] - qLoc[1]) <= 1) return false;
-            }
-            else if(q == size-1) {
+            if(q > 0 && qLoc[q-1] != -1) {
                 if(std::abs(qLoc[q] - qLoc[q-1]) <= 1) return false;
             }
-            else {
-                if(std::abs(qLoc[q] - qLoc[q-1]) <= 1) return false;
+            if(q < size-1 && qLoc[q+1] != -1) {
                 if(std::abs(qLoc[q] - qLoc[q+1]) <= 1) return false;
             }
         }
@@ -82,4 +78,8 @@ int Grid::getSize(){
 
 void Grid::removeCrown(int row, int col){
     crown[row][col] = false;
+}
+
+std::vector<std::vector<bool>> Grid::getCrown(){
+    return crown;
 }
