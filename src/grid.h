@@ -15,6 +15,8 @@ public:
     bool placeCrown(int row, int col);
     bool isValid();
     void print();
+    int getSize();
+    void removeCrown(int row, int col);
 };
 
 

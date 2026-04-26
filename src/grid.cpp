@@ -75,3 +75,11 @@ void Grid::print() {
         std::cout << std::endl;
     }
 }
+
+int Grid::getSize(){
+    return size;
+}
+
+void Grid::removeCrown(int row, int col){
+    crown[row][col] = false;
+}
