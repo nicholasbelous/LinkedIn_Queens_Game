@@ -25,6 +25,20 @@ bool Grid::placeCrown(int row, int col) {
 }
 
 bool Grid::isValid() {
+    // check each region has exactly one crown
+    std::vector<int> regionCount(size, 0);
+
+    for(int row = 0; row < size; row++){
+        for(int col = 0; col < size; col++){
+            if(crown[row][col]){
+                int region = board[row][col];
+                regionCount[region]++;
+                if(regionCount[region] > 1) return false;
+            }
+        }
+    }
+
+    //Checks that each row, col, and surrounding squares has no queen
     std::vector<int> qLoc(size, -1);
     for(int row = 0; row < size; row++) {
         int trueCount = 0;
