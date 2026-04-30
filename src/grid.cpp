@@ -37,8 +37,18 @@ bool Grid::isValid() {
             }
         }
     }
+    // check each column has at most one crown
+    std::vector<int> colCount(size, 0);
+    for(int row = 0; row < size; row++){
+        for(int col = 0; col < size; col++){
+            if(crown[row][col]){
+                colCount[col]++;
+                if(colCount[col] > 1) return false;
+            }
+        }
+    }
 
-    //Checks that each row, col, and surrounding squares has no queen
+    //Checks that each row has at most one queen
     std::vector<int> qLoc(size, -1);
     for(int row = 0; row < size; row++) {
         int trueCount = 0;
@@ -50,6 +60,8 @@ bool Grid::isValid() {
         }
         if(trueCount > 1) return false;
     }
+
+    //Check that queens arn't diagonally touching
     for(int q = 0; q < size; q++) {
         if(qLoc[q] != -1) {
             if(q > 0 && qLoc[q-1] != -1) {
