@@ -11,6 +11,7 @@ private:
 public:
     Grid(std::vector<std::vector<int>> b, int s);
     Grid(std::vector<std::vector<int>> b);
+    std::vector<std::vector<int>> getBoard();
 
     bool placeCrown(int row, int col);
     bool isValid();

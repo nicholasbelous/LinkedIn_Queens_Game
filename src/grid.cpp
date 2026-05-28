@@ -11,6 +11,10 @@ Grid::Grid(std::vector<std::vector<int>> b) : board(b), size(b.size()) {
     crown = std::vector<std::vector<bool>>(size, std::vector<bool>(size, false));
 }
 
+std::vector<std::vector<int>> Grid::getBoard(){
+    return board;
+}
+
 bool Grid::placeCrown(int row, int col) {
     std::vector<std::vector<bool>> tempCrowns = crown;
 
@@ -74,6 +78,7 @@ bool Grid::isValid() {
     }
     return true;
 }
+
 
 void Grid::print() {
     for(int col = 0; col < size; col++) {
